@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "b89013a0-de62-4199-95c0-06980927a575",
+		"name": "Text-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create-User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mobileNo\":\"9876543321\",\n    \"email\":\"test@gmail.com\",\n    \"password\":\"mypass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate and get token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test@gmail.com\",\n    \"password\":\"mypass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post discussion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YmI1MzFkMDIyZjRmOWIyNzJiNDZjIn0sImlhdCI6MTcxODMzNzAwNywiZXhwIjoxNzE4Njk3MDA3fQ.naU7ENnQ4AbxS42-zREAVngYhVP4dgrqvWTpNK8IG3Y",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"HTML is my favourite \",\n    \"hashtag\": \"HTML,scripting\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/discussions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"discussions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all posts done by me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YmI1MzFkMDIyZjRmOWIyNzJiNDZjIn0sImlhdCI6MTcxODM0Mzc2NSwiZXhwIjoxNzE4NzAzNzY1fQ.EqQYAoYn_bioHyIHyFMIonuHi03Di3kWNIWLqQVvzxA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/discussions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"discussions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like a post based on id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YmI1MzFkMDIyZjRmOWIyNzJiNDZjIn0sImlhdCI6MTcxODMzNzAwNywiZXhwIjoxNzE4Njk3MDA3fQ.naU7ENnQ4AbxS42-zREAVngYhVP4dgrqvWTpNK8IG3Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/discussions/like/666bbe4996e99307d1ffe212",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"discussions",
+						"like",
+						"666bbe4996e99307d1ffe212"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unlike a post based on id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YmI1MzFkMDIyZjRmOWIyNzJiNDZjIn0sImlhdCI6MTcxODM0Mzc2NSwiZXhwIjoxNzE4NzAzNzY1fQ.EqQYAoYn_bioHyIHyFMIonuHi03Di3kWNIWLqQVvzxA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/discussions/unlike/666bc0fd96e99307d1ffe217",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"discussions",
+						"unlike",
+						"666bc0fd96e99307d1ffe217"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post comment on a discussion based on id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YmI1MzFkMDIyZjRmOWIyNzJiNDZjIn0sImlhdCI6MTcxODMzNzAwNywiZXhwIjoxNzE4Njk3MDA3fQ.naU7ENnQ4AbxS42-zREAVngYhVP4dgrqvWTpNK8IG3Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\":\"Totally agreed haha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/discussions/comment/666bbe4996e99307d1ffe212",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"discussions",
+						"comment",
+						"666bbe4996e99307d1ffe212"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
